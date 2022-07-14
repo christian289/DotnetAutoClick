@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="ClickTest.Countdown"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ClickTest"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DesignHeight="450"
+             d:DesignWidth="450"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Storyboard x:Key="Animation">
+            <DoubleAnimation Storyboard.TargetName="Arc"
+                             Storyboard.TargetProperty="EndAngle"
+                             From="-90"
+                             To="270"/>
+        </Storyboard>
+    </UserControl.Resources>
+    <Viewbox>
+        <Grid Width="100" Height="100">
+            <Border Margin="5"
+                    Background="#222"
+                    CornerRadius="50">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Label Margin="0,-10,0,0"
+                           Content="{Binding Seconds, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:Countdown}}}"
+                           FontSize="50"
+                           Foreground="#fff" />
+                    <Label Margin="0,-20,0,0"
+                           HorizontalAlignment="Center"
+                           Content="sec"
+                           Foreground="#fff" />
+                </StackPanel>
+            </Border>
+
+            <local:Arc x:Name="Arc"
+                       Center="50, 50"
+                       EndAngle="-90"
+                       Radius="45"
+                       StartAngle="-90"
+                       Stroke="#45d3be"
+                       StrokeThickness="5" />
+        </Grid>
+    </Viewbox>
+</UserControl>
